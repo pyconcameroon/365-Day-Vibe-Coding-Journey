@@ -1,0 +1,95 @@
+Day 1
+--------
+What is Vibe Coding?
+---------------------
+Vibe Coding is a development approach that uses natural language to drive AI programming assistants to generate, modify, and verify software.
+
+Vibe Coding is an AI-assisted programming approach: you describe your goals, constraints, and acceptance criteria using natural language, then AI programming tools like Cursor, Claude Code, and Codex generate or modify the code, which is then reviewed, run, and deployed by humans.
+
+It doesn't mean you "don't need to know any code at all," but rather that the first step in learning Vibe Coding moves from manually writing syntax to expressing requirements, managing context, and validating results.
+
+In other words, Vibe Coding changes the barrier from "memorizing all the syntax" to "clearly stating what you want and being able to judge whether the result is correct."
+
+==============================
+
+Who is suitable for learning?
+Beginners with no prior experience can use Vibe Coding to create their first small project before going back to understand HTML, CSS, JavaScript, and databases. Product managers, designers, operations staff, and founders can turn PRDs, prototypes, and growth ideas into experiential demos. 
+
+==============================
+How to begin
+
+First, choose a small goal, such as a personal homepage, a course introduction page, a spreadsheet tool, or an AI customer service demo. The prompts should clearly state the page's objective, target users, technology stack, existing files, mobile requirements, and acceptance criteria.
+
+======================
+
+2. Benefits of vibe coding
+🚀 Faster development
+
+AI can quickly generate:
+
+Boilerplate code
+CRUD applications
+API endpoints
+Database models
+User interfaces
+Forms
+Authentication systems
+Tests
+Documentation
+
+A feature that might take hours to manually scaffold can potentially be started in minutes.
+
+======================
+
+🧠 Reduces repetitive work
+
+Instead of repeatedly writing similar code, you can ask AI to generate it.
+
+For example:
+
+Create CRUD endpoints for products with validation, pagination, and error handling.
+
+This lets you spend more time on:
+
+Business requirements
+Architecture
+User experience
+Security
+Product strategy
+
+============================
+📚 Helps you learn faster
+
+AI can explain unfamiliar code:
+
+Explain this function line by line.
+
+=========================
+⚡ Rapid prototyping
+
+Vibe coding is excellent for building:
+
+MVPs
+Internal tools
+Proofs of concept
+Landing pages
+Automation scripts
+Small SaaS prototypes
+
+============================
+
+🤖 Dependency hallucinations
+
+AI may recommend:
+
+Packages that don't exist
+Incorrect API methods
+Outdated documentation
+Deprecated libraries
+
+Always verify dependencies before adding them.
+
+===========================
+Tools i will be using is 
+1. Cursor/chatgpt
+
