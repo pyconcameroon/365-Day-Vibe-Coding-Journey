@@ -1,0 +1,184 @@
+Social Media Application Architecture
+Let's design a simple social-media application like a basic version of Instagram, Facebook, or X.
+
+The core idea is:
+
+Users
+  ↓
+Frontend
+  ↓
+Backend API
+  ↓
+Business Logic
+  ↓
+Database + Storage
+
+=============================
+
+
+
+2. Component-by-Component Architecture
+
+Component 1: Authentication
+
+Responsibility
+
+Controls who can access the application.
+
+
+Features
+
+
+
+Register
+
+
+Login
+
+
+Logout
+
+
+Password hashing
+
+
+Session/token management
+
+
+Password reset
+================================
+
+
+Component 2: User Profiles
+
+Each user has a profile.
+
+
+Features
+
+
+
+Profile picture
+
+
+Username
+
+
+Biography
+
+
+Followers
+
+
+Following
+
+
+User posts
+
+=====================================
+
+
+Component 3: Posts
+
+This is the core content system.
+
+
+Users can:
+
+
+
+
+Create posts
+
+
+Edit posts
+
+
+Delete posts
+
+
+View posts
+
+====================================
+
+
+Component 5: Feed
+The feed determines which posts a user sees.
+
+
+
+For a simple MVP:
+
+
+User follows people
+        ↓
+Get followed user IDs
+        ↓
+Get their recent posts
+        ↓
+Sort by newest
+        ↓
+Display feed
+
+
+
+====================================
+
+
+Component 6: Likes
+
+Users can like posts.
+
+
+
+Like
+├── id
+├── user_id
+├── post_id
+└── created_at
+
+===================================
+
+
+Component 7: Comments
+
+Users can comment on posts.
+
+
+Comment
+├── id
+├── post_id
+├── user_id
+├── content
+└── created_at
+======================================
+
+
+
+Component 8: Follow System
+
+Users follow other users.
+
+
+Use a relationship table:
+
+
+Follow
+├── follower_id
+├── following_id
+└── created_at
+=====================================
+Component 9: Notifications
+Examples:
+
+
+Someone liked your post.
+
+
+Someone commented.
+
+
+Someone followed you.
+=====================================
+3. Database Architecture
+A simplified database could look like:
