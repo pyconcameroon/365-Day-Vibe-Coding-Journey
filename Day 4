@@ -1,5 +1,750 @@
 i created a personal profile page using my curriculum vitae.
 i used cursor ai to build this personal profile page.
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ngangsi Richard Akumbo · Software Developer</title>
 
+    <!-- Google Fonts for a clean, professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ---------- Reset & Base ---------- */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* ---------- Container ---------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* ---------- Header / Hero ---------- */
+        .profile-header {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            padding: 2.5rem 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-header .name-title h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.2rem;
+            line-height: 1.2;
+        }
+
+        .profile-header .name-title .tagline {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #94a3b8;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .profile-header .name-title .tagline span {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.15rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-info a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.15s;
+        }
+
+        .contact-info a:hover {
+            color: #60a5fa;
+        }
+
+        .contact-info a i {
+            font-size: 1rem;
+            width: 1.2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* ---------- Main Layout ---------- */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 0;
+        }
+
+        /* ---------- Sidebar ---------- */
+        .sidebar {
+            background: #f8fafc;
+            padding: 2rem 2rem 2.5rem;
+            border-right: 1px solid #e9edf2;
+        }
+
+        .sidebar section {
+            margin-bottom: 2.2rem;
+        }
+
+        .sidebar section:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Core Skills --- */
+        .skillset {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .skill-group .label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #475569;
+        }
+
+        .skill-group .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.6rem;
+        }
+
+        .skill-group .tags span {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 0.15rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            color: #1e293b;
+            transition: all 0.1s;
+        }
+
+        .skill-group .tags span:hover {
+            border-color: #94a3b8;
+            background: #f1f5f9;
+        }
+
+        /* --- Profile summary (sidebar) --- */
+        .profile-summary p {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* --- Awards & Grants --- */
+        .award-item {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 0.75rem;
+            padding: 0.9rem 1rem;
+            margin-bottom: 0.75rem;
+            transition: border-color 0.15s;
+        }
+
+        .award-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .award-item .award-title {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #0f172a;
+        }
+
+        .award-item .award-desc {
+            font-size: 0.84rem;
+            color: #475569;
+            margin-top: 0.1rem;
+        }
+
+        /* ---------- Main Content ---------- */
+        .main-content {
+            padding: 2rem 2.5rem 2.5rem;
+            background: #ffffff;
+        }
+
+        .main-content section {
+            margin-bottom: 2.2rem;
+        }
+
+        .main-content section:last-child {
+            margin-bottom: 0;
+        }
+
+        .main-content h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #475569;
+            font-weight: 600;
+            border-bottom: 2px solid #eef2f6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* --- Experience --- */
+        .exp-item {
+            margin-bottom: 1.6rem;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-item .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.3rem 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .exp-item .exp-header .exp-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0f172a;
+        }
+
+        .exp-item .exp-header .exp-org {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .exp-item .exp-header .exp-date {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 400;
+            background: #f1f5f9;
+            padding: 0.1rem 0.8rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .exp-item .exp-location {
+            font-size: 0.84rem;
+            color: #64748b;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-item ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.3rem;
+        }
+
+        .exp-item ul li {
+            font-size: 0.92rem;
+            color: #334155;
+            padding-left: 1.4rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+            line-height: 1.6;
+        }
+
+        .exp-item ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        /* --- Education --- */
+        .edu-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.2rem 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .edu-item:last-child {
+            border-bottom: none;
+        }
+
+        .edu-item .edu-degree {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .edu-item .edu-school {
+            color: #475569;
+            font-size: 0.92rem;
+        }
+
+        .edu-item .edu-date {
+            font-size: 0.8rem;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.05rem 0.8rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        /* --- Codefarm (project) --- */
+        .codefarm-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #f1f5f9;
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: background 0.15s, transform 0.1s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .codefarm-link:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .codefarm-link i {
+            color: #3b82f6;
+            font-size: 1.1rem;
+        }
+
+        /* ---------- Footer ---------- */
+        .profile-footer {
+            background: #f8fafc;
+            border-top: 1px solid #e9edf2;
+            padding: 1rem 2.5rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #94a3b8;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .profile-footer a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .profile-footer a:hover {
+            color: #3b82f6;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e9edf2;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-info {
+                border-radius: 1rem;
+                padding: 0.75rem 1rem;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .profile-header .name-title h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .container {
+                border-radius: 1rem;
+            }
+
+            .profile-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+                border-radius: 0.75rem;
+                background: rgba(255, 255, 255, 0.04);
+            }
+
+            .exp-item .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .exp-item .exp-header .exp-date {
+                white-space: normal;
+            }
+
+            .edu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ============================================================ -->
+        <!--  HEADER  –  name, title, contact links                        -->
+        <!-- ============================================================ -->
+        <header class="profile-header">
+
+            <div class="name-title">
+                <h1>Ngangsi Richard Akumbo</h1>
+                <div class="tagline">
+                    <span>Software Developer</span>
+                    <span>Python Trainer</span>
+                    <span>Community Organizer</span>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <a href="mailto:ngangsia@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i> ngangsia@gmail.com
+                </a>
+                <a href="tel:+237653016975" aria-label="Phone">
+                    <i class="fas fa-phone-alt"></i> +237 653 016 975
+                </a>
+                <a href="https://linkedin.com/in/ngangsi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i> linkedin.com/in/ngangsi
+                </a>
+                <a href="https://github.com/pyconcameroon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fab fa-github"></i> github.com/pyconcameroon
+                </a>
+            </div>
+
+        </header>
+
+        <!-- ============================================================ -->
+        <!--  MAIN GRID  –  sidebar (skills, summary, awards)  +  content  -->
+        <!-- ============================================================ -->
+        <div class="main-grid">
+
+            <!-- ========== SIDEBAR ========== -->
+            <aside class="sidebar">
+
+                <!-- ---- Profile Summary ---- -->
+                <section>
+                    <h2>Profile</h2>
+                    <div class="profile-summary">
+                        <p>
+                            Full-stack software developer and Python trainer with 10+ years of experience
+                            building web applications, teaching programming, and leading tech education
+                            initiatives. Grant-winning organizer of Python education programs promoting
+                            coding skills and women's participation in technology across Cameroon.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ---- Core Skills ---- -->
+                <section>
+                    <h2>Core Skills</h2>
+                    <div class="skillset">
+
+                        <div class="skill-group">
+                            <span class="label">Languages &amp; Frameworks</span>
+                            <div class="tags">
+                                <span>Python</span><span>Django</span><span>JavaScript</span>
+                                <span>HTML</span><span>CSS</span><span>Bootstrap</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <span class="label">Data Science</span>
+                            <div class="tags">
+                                <span>Data Analysis</span><span>Machine Learning</span>
+                                <span>Deep Learning</span><span>NumPy</span>
+                                <span>Matplotlib</span><span>scikit-learn</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <span class="label">Databases &amp; APIs</span>
+                            <div class="tags">
+                                <span>SQL</span><span>MySQL</span><span>PostgreSQL</span>
+                                <span>MongoDB</span><span>JSON</span><span>REST APIs</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <span class="label">Tools &amp; Practices</span>
+                            <div class="tags">
+                                <span>Git/GitHub</span><span>Unit Testing</span><span>Debugging</span>
+                                <span>Nagios Core</span><span>Linux</span><span>Windows</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <span class="label">Professional</span>
+                            <div class="tags">
+                                <span>Attention to Detail</span><span>Collaboration</span>
+                                <span>Communication</span><span>Creativity</span>
+                                <span>Decision-Making</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ---- Awards & Grants ---- -->
+                <section>
+                    <h2>Awards &amp; Grants</h2>
+
+                    <div class="award-item">
+                        <div class="award-title">Women in Tech Grant</div>
+                        <div class="award-desc">
+                            Recipient of a $500 grant for initiatives increasing the participation of
+                            women and girls in technology.
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-title">Python Education Grants</div>
+                        <div class="award-desc">
+                            Secured multiple grants ($500 – $1,000 each) to promote Python programming
+                            education in Cameroon.
+                        </div>
+                    </div>
+                </section>
+
+            </aside>
+
+            <!-- ========== MAIN CONTENT ========== -->
+            <main class="main-content">
+
+                <!-- ---- Professional Experience ---- -->
+                <section>
+                    <h2>Professional Experience</h2>
+
+                    <!-- Experience 1 -->
+                    <article class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Lead Software Developer</span>
+                            <span class="exp-org">Batasia Ltd</span>
+                            <span class="exp-date">Feb 2022 – Dec 2023</span>
+                        </div>
+                        <div class="exp-location">Douala, Cameroon</div>
+                        <ul>
+                            <li>
+                                Led the design and development of a multilingual web application enabling
+                                users to read books online in their local languages, expanding access to
+                                native-language literature.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Experience 2 -->
+                    <article class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Python Trainer &amp; Community Organizer</span>
+                            <span class="exp-org">PyCon Cameroon</span>
+                            <span class="exp-date">June 2014 – Present</span>
+                        </div>
+                        <div class="exp-location">Bamenda, Cameroon</div>
+                        <ul>
+                            <li>
+                                Instruct high school students in Python programming, covering fundamentals
+                                through advanced topics.
+                            </li>
+                            <li>
+                                Organize and lead conferences and hands-on workshops on Python coding,
+                                software design, and debugging.
+                            </li>
+                            <li>
+                                Mentor front-end development students, integrating their work into
+                                Python-based applications.
+                            </li>
+                            <li>
+                                Secure recurring grants ($500–$1,000) to fund Python programming education
+                                across Cameroon.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Experience 3 -->
+                    <article class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Web Developer</span>
+                            <span class="exp-org">Myles Ltd</span>
+                            <span class="exp-date">2013 – 2014</span>
+                        </div>
+                        <div class="exp-location">Douala, Cameroon</div>
+                        <ul>
+                            <li>
+                                Developed and maintained e-commerce websites, ensuring optimal platform
+                                performance.
+                            </li>
+                            <li>
+                                Implemented user experience enhancements and performed ongoing
+                                troubleshooting and optimization.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Experience 4 -->
+                    <article class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Computer Software Engineer</span>
+                            <span class="exp-org">CTDI GmbH</span>
+                            <span class="exp-date">2011 – 2012</span>
+                        </div>
+                        <div class="exp-location">Malsch, Germany</div>
+                        <ul>
+                            <li>
+                                Configured and customized Nagios Core for system, network, and
+                                infrastructure monitoring.
+                            </li>
+                            <li>
+                                Managed real-time alerts and notifications to maintain high system
+                                reliability.
+                            </li>
+                            <li>
+                                Developed proactive monitoring strategies to identify and resolve
+                                potential issues early.
+                            </li>
+                        </ul>
+                    </article>
+
+                </section>
+
+                <!-- ---- Education ---- -->
+                <section>
+                    <h2>Education</h2>
+
+                    <div class="edu-item">
+                        <span class="edu-degree">Computer Science (Coursework)</span>
+                        <span class="edu-school">Rhein-Waal University of Applied Sciences</span>
+                        <span class="edu-date">2011 – 2012</span>
+                    </div>
+
+                    <div class="edu-item">
+                        <span class="edu-degree">GCE Advanced Level</span>
+                        <span class="edu-school">Bamenda, Cameroon</span>
+                        <span class="edu-date">2002 – 2005</span>
+                    </div>
+                </section>
+
+                <!-- ---- CodeFarm (project) ---- -->
+                <section>
+                    <h2>Project</h2>
+                    <a href="https://github.com/pyconcameroon/codefarm" target="_blank" rel="noopener noreferrer" class="codefarm-link">
+                        <i class="fab fa-github"></i>
+                        CodeFarm — curated collection of Python &amp; full-stack code samples
+                    </a>
+                </section>
+
+            </main>
+
+        </div>
+        <!-- end .main-grid -->
+
+        <!-- ============================================================ -->
+        <!--  FOOTER  –  simple closing note                               -->
+        <!-- ============================================================ -->
+        <footer class="profile-footer">
+            <span>&copy; 2026 Ngangsi Richard Akumbo</span>
+            <span>·</span>
+            <span>Built with <i class="fas fa-heart" style="color:#ef4444;font-size:0.7rem;"></i> using semantic HTML</span>
+            <span>·</span>
+            <a href="mailto:ngangsia@gmail.com">ngangsia@gmail.com</a>
+        </footer>
+
+    </div>
+    <!-- end .container -->
+
+</body>
+</html>
   
